@@ -1,0 +1,94 @@
+<!-- Cabeçalho Inicio -->
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>JC Academy</title>
+	</head>
+<body>
+	<header>
+		<img alt="JC Academy" src="images/Logo.png">
+		<nav>
+			<div>
+				<a href="novoAluno.html">Novo aluno</a><br />
+				<a href="pesquisaDeAluno.html">Pesquisa de aluno</a><br />
+				<a href="controleDeAcesso.html">Controle de acesso</a><br />
+				<a href="relatoriosDeEntradaSaida.html">Relatórios de entradas e saidas</a><br />
+				<a href="relatoriosDeSituacoes.html">Relatórios de situações</a>
+			</div>
+		</nav>
+	</header>
+<!-- Cabeçalho Fim -->
+	
+	<h1>Relatórios de Situações</h1>
+	
+	<div id="infoMessage">
+		(Aqui vai uma eventual mensagem do sistema confirmando sucesso ou erro!)
+	</div>
+	
+	<br />
+	
+	<form>
+		<fieldset>
+			<legend>Situação</legend>			
+			<label for="situacao">Situação</label>
+			<select name="situacao" id="situacao">
+				<option>Ativo</option>
+				<option>Inativo</option>
+				<option>Com pendência</option>
+			</select>			
+		</fieldset>
+		<br />
+		<input type="submit" value="Gerar Relatório" />
+	</form>
+	
+	<br />
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Situação</th>
+			<th>Celular</th>
+			<th>Fixo</th>
+			<th>Ações</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Teste 1</td>
+			<td>Ativo</td>
+			<td>11 1111 1111</td>
+			<td>11 1111 1111</td>
+			<td><input type="button" value="Editar" /></td>			
+		</tr>		
+		<tr>
+			<td>2</td>
+			<td>Teste 2</td>
+			<td>Ativo</td>
+			<td>22 2222 2222</td>
+			<td>22 2222 2222</td>
+			<td><input type="button" value="Editar" /></td>			
+		</tr>		
+		<tr>
+			<td>3</td>
+			<td>Teste 3</td>
+			<td>Ativo</td>
+			<td>33 3333 3333</td>
+			<td>33 3333 3333</td>
+			<td><input type="button" value="Editar" /></td>			
+		</tr>		
+		<tr>
+			<td>4</td>
+			<td>Teste 4</td>
+			<td>Ativo</td>
+			<td>44 4444 4444</td>
+			<td>44 4444 4444</td>
+			<td><input type="button" value="Editar" /></td>			
+		</tr>		
+	</table>
+
+
+<!-- Rodapé inicio  -->
+	</body>
+</html>
+<!-- Rodapé fim  -->

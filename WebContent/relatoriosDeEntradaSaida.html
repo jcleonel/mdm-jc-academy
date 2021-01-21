@@ -1,0 +1,86 @@
+<!-- Cabeçalho Inicio -->
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>JC Academy</title>
+	</head>
+<body>
+	<header>
+		<img alt="JC Academy" src="images/Logo.png">
+		<nav>
+			<div>
+				<a href="novoAluno.html">Novo aluno</a><br />
+				<a href="pesquisaDeAluno.html">Pesquisa de aluno</a><br />
+				<a href="controleDeAcesso.html">Controle de acesso</a><br />
+				<a href="relatoriosDeEntradaSaida.html">Relatórios de entradas e saidas</a><br />
+				<a href="relatoriosDeSituacoes.html">Relatórios de situações</a>
+			</div>
+		</nav>
+	</header>
+<!-- Cabeçalho Fim -->
+	
+	<h1>Relatórios de Entrada e Saída</h1>
+	
+	<div id="infoMessage">
+		(Aqui vai uma eventual mensagem do sistema confirmando sucesso ou erro!)
+	</div>
+	
+	<br />
+	
+	<form>
+		<fieldset>	
+			<legend>Parâmetros de Entrada e Saídas</legend>
+			<label for="id">ID</label><br />
+			<input type="text" name="id" id="id"/><br />			
+			<label for="dataInicial">Data Inicial</label><br />
+			<input type="date" name="dataInicial" id="dataInicial" /><br />
+			<label for="dataFinal">Data Final</label><br />
+			<input type="date" name="dataFinal" id="dataFinal" /><br />				
+		</fieldset>
+		<br />
+		<input type="submit" value="Gerar Relatório" />
+	</form>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Entrada</th>
+			<th>Saída</th>
+			<th>Duração</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Teste 1</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>00:50</td>	
+		</tr>		
+		<tr>
+			<td>2</td>
+			<td>Teste 2</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>00:50</td>			
+		</tr>		
+		<tr>
+			<td>3</td>
+			<td>Teste 3</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>00:50</td>			
+		</tr>		
+		<tr>
+			<td>4</td>
+			<td>Teste 4</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>05/03/2019 09:15:14</td>
+			<td>00:50</td>		
+		</tr>		
+	</table>
+
+<!-- Rodapé inicio  -->
+	</body>
+</html>
+<!-- Rodapé fim  -->
