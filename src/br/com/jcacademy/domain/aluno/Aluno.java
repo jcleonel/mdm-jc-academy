@@ -1,8 +1,20 @@
 package br.com.jcacademy.domain.aluno;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Aluno {
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ALUNO")
+public class Aluno implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	public enum Sexo {
 		Masculino, Feminino;
@@ -11,15 +23,35 @@ public class Aluno {
 	public enum Situacao {
 		Ativo, Inativo, Pendente;
 	}
-
+	
+	@Id
+	@Column(name="ID", nullable = false, length = 8)
 	private String matricula;
+	
+	@Column(name="NOME", nullable = false, length = 64)
 	private String nome;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="SEXO", nullable = false, length = 1)
 	private Sexo sexo;
+	
+	@Column(name="RG", nullable = false, length = 10)
 	private Integer rg;
+	
+	@Column(name="NASCIMENTO", nullable = false)
 	private LocalDate dataNascimento;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="SITUACAO", nullable = false, length = 1)
 	private Situacao situacao;
+	
+	@Column(name="EMAIL", nullable = true, length = 64)
 	private String email;
+	
+	@Embedded
 	private Endereco endereco = new Endereco();
+	
+	@Embedded
 	private Telefone telefone = new Telefone();
 
 	public String getMatricula() {
