@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- Começo do cabeçalho -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+	
+<head jsf:id="head">
+    <meta charset="ISO-8859-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dados do Aluno</title>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/estilo.css" />
+</head>
+<body>
+    
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-default fixed-top">
+        <div class="container-fluid">
+        
+            <a class="navbar-brand" href="#"><img src="resources/images/logo.png" alt="JC Academy" /></a>        
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ml-md-auto text-white">
+                    <li class="nav-item">
+                        <a class="nav-link" jsf:outcome="dadosAluno">Novo Aluno</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" jsf:outcome="pesquisaDeAluno">Pesquisa de Alunos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" jsf:outcome="controleDeAcesso">Controle de Acesso</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Relatórios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" jsf:outcome="relatoriosDeEntradaSaida">Entradas e Saídas</a>
+                        <a class="dropdown-item" jsf:outcome="relatoriosDeSituacoes">Situações</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link text-dark">#</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- Final do cabeçalho -->
+
+	<ui:insert name="conteudo"/>
+    
+<!-- Inicio do rodapé -->
+    <footer class="text-light text-center bg-dark">
+		<p>Desenvolvido por <a href="#">JC Leonel.</a></p>
+    </footer>
+    
+    <script src="resources/javascript/jquery.js"></script>
+    <script src="resources/javascript/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<!-- Final do Rodapé -->
