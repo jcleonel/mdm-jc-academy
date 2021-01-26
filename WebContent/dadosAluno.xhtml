@@ -45,7 +45,9 @@
 	                    <hr />
 	                    <div class="form-group">
 	                        <label for="nome">Nome</label>
-	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.nome}" id="nome" placeholder="Digite o nome" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.nome}" id="nome" maxlength="64" jsf:label="Nome" placeholder="Digite o nome">                
+	                        	<f:validateLength minimum="2" maximum="64" />
+	                        </input>
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="sexo">Sexo</label>
@@ -55,12 +57,16 @@
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="rg">RG</label>
-	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.rg}" id="rg" placeholder="Digite o RG" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.rg}" id="rg" maxlength="10" jsf:label="RG" placeholder="Digite o RG">     
+	                        	<f:validateRequired />
+	                        	<f:validateLongRange minimum="100000" maximum="9999999999" />        
+	                        </input>
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="dataDeNascimento">Data de Nascimento</label>
-	                        <input type="date" class="form-control" jsf:value="#{alunoBean.aluno.dataNascimento}" id="dataDeNascimento">
+	                        <input type="date" class="form-control" jsf:value="#{alunoBean.aluno.dataNascimento}" id="dataDeNascimento" jsf:label="Data de Nascimento">
 	                        	<f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+	                        	<f:validateRequired />
 	                        </input>                
 	                    </div>
 	                </div>
@@ -85,39 +91,53 @@
 	                        <div class="col-lg-8 col-12">
 	                            <div class="form-group">
 	                                <label for="rua">Rua</label>
-	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.rua}" id="rua" placeholder="Digite o nome da rua" />                
+	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.rua}" id="rua" maxlength="128" jsf:label="Rua" placeholder="Digite o nome da rua">
+	                                	<f:validateLength minimum="2" maximum="128" />
+	                                </input>           
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-4 col-12">
 	                            <div class="form-group">
 	                                <label for="numero">Número</label>
-	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.numero}" id="numero" placeholder="Digite o número" />                
+	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.numero}" id="numero" maxlength="6" jsf:label="Número" placeholder="Digite o número">                
+	                                	<f:validateRequired />
+	                                	<f:validateLongRange minimum="1" maximum="999999" />
+	                                </input>
 	                            </div>
 	                        </div>
 	                    </div>                    
 	                    <div class="form-group">
 	                        <label for="complemento">Complemento</label>
-	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.complemento}" id="complemento" placeholder="Digite algum complemento" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.complemento}" id="complemento" maxlength="32" jsf:label="Complemento" placeholder="Digite algum complemento">
+	                        	<f:validateLength maximum="32" />
+	                        </input>                
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-lg-6 col-12">
 	                            <div class="form-group">
 	                                <label for="estado">Estado</label>
-	                                <select class="form-control" jsf:value="#{alunoBean.aluno.endereco.estado.sigla}" id="estado" size="0">
+	                                <select class="form-control" jsf:value="#{alunoBean.aluno.endereco.estado.sigla}" id="estado" jsf:label="Estado" size="0">
+	                                	<f:selectItem itemLabel="Escolha..." itemValue="" />
 	                                    <f:selectItems value="#{dataBean.estados}" var="e" itemLabel="#{e.nome}" itemValue="#{e.sigla}" />
+	                                    <f:validateRequired />
 	                                </select>                
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-12">
 	                            <div class="form-group">
 	                                <label for="cep">CEP</label>
-	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.cep}" id="cep" placeholder="Digite o CEP" />                
+	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.cep}" id="cep" maxlength="8" jsf:label="CEP" placeholder="Digite o CEP">                
+	                            		<f:validateRequired />
+	                        			<f:validateLongRange minimum="10000000" maximum="99999999" />	
+	                                </input>
 	                            </div>
 	                        </div>
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="cidade">Cidade</label>
-	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.cidade}" id="cidade" placeholder="Digite o nome da cidade" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.cidade}" id="cidade" maxlength="64" jsf:label="Cidade" placeholder="Digite o nome da cidade">                
+	                        	<f:validateLength minimum="2" maximum="64" />
+	                        </input>
 	                    </div>
 	                </div>
 	                <br />
@@ -127,19 +147,28 @@
 	                    <hr />
 	                    <div class="form-group">
 	                        <label for="email">E-mail</label>
-	                        <input type="email" class="form-control" jsf:value="#{alunoBean.aluno.email}" id="email" placeholder="Digite seu e-mail" />                
+	                        <input type="email" class="form-control" jsf:value="#{alunoBean.aluno.email}" id="email" maxlength="64" jsf:label="E-mail" placeholder="Digite seu e-mail">                
+	                        	<f:validateLength maximum="64" />
+	                        	<f:validateRegex pattern=".+@.+" />
+	                        </input>
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-lg-4 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneCelularDDD">Telefone Celular</label>
-	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.dddCelular}" id="telefoneCelularDDD" placeholder="DDD" />                                           
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.dddCelular}" id="telefoneCelularDDD" maxlength="2" jsf:label="DDD Celular" placeholder="DDD">
+	                                	<f:validateRequired />
+	                        			<f:validateLongRange minimum="10" maximum="99" />
+	                                </input>	                                                                           
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-8 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneCelularDDD">-</label>
-	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.numeroCelular}" id="telefoneCelularNumero" placeholder="Número" />               
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.numeroCelular}" id="telefoneCelularNumero" maxlength="9" jsf:label="Número Celular" placeholder="Número">
+	                                	<f:validateRequired />
+	                        			<f:validateLongRange minimum="10000000" maximum="999999999" />
+	                                </input>                 
 	                            </div>
 	                        </div>
 	                    </div>
@@ -147,13 +176,17 @@
 	                        <div class="col-lg-4 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneFixoDDD">Telefone Fixo</label>
-	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.dddFixo}" id="telefoneFixoDDD" placeholder="DDD" />                                           
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.dddFixo}" id="telefoneFixoDDD" maxlength="2" jsf:label="DDD Fixo" placeholder="DDD">
+	                        			<f:validateLongRange minimum="10" maximum="99" />
+	                                </input>                                           
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-8 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneFixoNumero">-</label>
-	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.numeroFixo}" id="telefoneFixoNumero" placeholder="Número" />               
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.numeroFixo}" id="telefoneFixoNumero" maxlength="9" jsf:label="Número Fixo" placeholder="Número">               
+	                                	<f:validateLongRange minimum="10000000" maximum="999999999" />
+	                                </input>   
 	                            </div>
 	                        </div>
 	                    </div>                   
