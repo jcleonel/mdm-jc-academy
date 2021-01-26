@@ -21,35 +21,36 @@
 	    </header>
 	
 	    <div class="container-fluid">
-	        <div class="alert alert-warning" role="alert">
+	        <div class="alert alert-warning" role="alert">	        	
 	            Alerta warning em caso de erro no sistema!
 	        </div>
 	    </div>
 	    <br />
 	    <section>
 	        <div class="container-fluid">
-	            <form action="">
+	            <form jsf:id="form">
 	                <div class="container">
 	                    <h4>Dados Pessoais</h4>
 	                    <hr />
 	                    <div class="form-group">
 	                        <label for="nome">Nome</label>
-	                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.nome}" id="nome" placeholder="Digite o nome" />                
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="sexo">Sexo</label>
-	                        <select class="form-control" name="sexo" id="sexo">
-	                            <option>Masculino</option>
-	                            <option>Feminino</option>
+	                        <select class="form-control" jsf:value="#{alunoBean.aluno.sexo}" id="sexo"  size="0">
+	                            <f:selectItems value="#{dataBean.sexos}" />
 	                        </select>
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="rg">RG</label>
-	                        <input type="text" class="form-control" name="rg" id="rg" placeholder="Digite o RG" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.rg}" id="rg" placeholder="Digite o RG" />                
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="dataDeNascimento">Data de Nascimento</label>
-	                        <input type="date" class="form-control" name="dataDeNascimento" id="dataDeNascimento" />                
+	                        <input type="date" class="form-control" jsf:value="#{alunoBean.aluno.dataNascimento}" id="dataDeNascimento">
+	                        	<f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+	                        </input>                
 	                    </div>
 	                </div>
 	                <br />
@@ -59,10 +60,8 @@
 	                    <hr />                    
 	                    <div class="form-group">
 	                        <label for="situacao">Situação</label>
-	                        <select class="form-control" name="situacao" id="situacao">
-	                            <option>Ativo</option>
-	                            <option>Inativo</option>
-	                            <option>Com pendência</option>
+	                        <select class="form-control" jsf:value="#{alunoBean.aluno.situacao}" id="situacao" size="0">
+	                             <f:selectItems value="#{dataBean.situacoes}" />
 	                        </select>
 	                    </div>
 	                </div>
@@ -75,39 +74,39 @@
 	                        <div class="col-lg-8 col-12">
 	                            <div class="form-group">
 	                                <label for="rua">Rua</label>
-	                                <input type="text" class="form-control" name="rua" id="rua" placeholder="Digite o nome da rua" />                
+	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.rua}" id="rua" placeholder="Digite o nome da rua" />                
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-4 col-12">
 	                            <div class="form-group">
 	                                <label for="numero">Número</label>
-	                                <input type="text" class="form-control" name="numero" id="numero" placeholder="Digite o número" />                
+	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.numero}" id="numero" placeholder="Digite o número" />                
 	                            </div>
 	                        </div>
 	                    </div>                    
 	                    <div class="form-group">
 	                        <label for="complemento">Complemento</label>
-	                        <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Digite algum complemento" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.complemento}" id="complemento" placeholder="Digite algum complemento" />                
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-lg-6 col-12">
 	                            <div class="form-group">
 	                                <label for="estado">Estado</label>
-	                                <select class="form-control" name="estado" id="estado">
-	                                    <option>(lista)</option>
+	                                <select class="form-control" jsf:value="#{alunoBean.aluno.endereco.estado.sigla}" id="estado" size="0">
+	                                    <f:selectItems value="#{dataBean.estados}" var="e" itemLabel="#{e.nome}" itemValue="#{e.sigla}" />
 	                                </select>                
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-12">
 	                            <div class="form-group">
 	                                <label for="cep">CEP</label>
-	                                <input type="text" class="form-control" name="cep" id="cep" placeholder="Digite o CEP" />                
+	                                <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.cep}" id="cep" placeholder="Digite o CEP" />                
 	                            </div>
 	                        </div>
 	                    </div>
 	                    <div class="form-group">
 	                        <label for="cidade">Cidade</label>
-	                        <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Digite o nome da cidade" />                
+	                        <input type="text" class="form-control" jsf:value="#{alunoBean.aluno.endereco.cidade}" id="cidade" placeholder="Digite o nome da cidade" />                
 	                    </div>
 	                </div>
 	                <br />
@@ -117,19 +116,19 @@
 	                    <hr />
 	                    <div class="form-group">
 	                        <label for="email">E-mail</label>
-	                        <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu e-mail" />                
+	                        <input type="email" class="form-control" jsf:value="#{alunoBean.aluno.email}" id="email" placeholder="Digite seu e-mail" />                
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-lg-4 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneCelularDDD">Telefone Celular</label>
-	                                <input type="tel" class="form-control" name="telefoneCelularDDD" id="telefoneCelularDDD" placeholder="DDD" />                                           
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.dddCelular}" id="telefoneCelularDDD" placeholder="DDD" />                                           
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-8 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneCelularDDD">-</label>
-	                                <input type="tel" class="form-control" name="telefoneCelularNumero" id="telefoneCelularNumero" placeholder="Número" />               
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.numeroCelular}" id="telefoneCelularNumero" placeholder="Número" />               
 	                            </div>
 	                        </div>
 	                    </div>
@@ -137,13 +136,13 @@
 	                        <div class="col-lg-4 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneFixoDDD">Telefone Fixo</label>
-	                                <input type="tel" class="form-control" name="telefoneFixoDDD" id="telefoneFixoDDD" placeholder="DDD" />                                           
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.dddFixo}" id="telefoneFixoDDD" placeholder="DDD" />                                           
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-8 col-12">
 	                            <div class="form-group">
 	                                <label for="telefoneFixoNumero">-</label>
-	                                <input type="tel" class="form-control" name="telefoneFixoNumero" id="telefoneFixoNumero" placeholder="Número" />               
+	                                <input type="tel" class="form-control" jsf:value="#{alunoBean.aluno.telefone.numeroFixo}" id="telefoneFixoNumero" placeholder="Número" />               
 	                            </div>
 	                        </div>
 	                    </div>                   
@@ -154,7 +153,7 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-12">
 	                            <div class="form-group">
-	                                <button type="submit" class="btn btn-dark btn-lg btn-block">Gravar</button>
+	                                <button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{alunoBean.gravar}">Gravar</button>
 	                            </div>                            
 	                        </div>
 	                        <div class="col-lg-6 col-12">
