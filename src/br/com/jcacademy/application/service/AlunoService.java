@@ -34,5 +34,9 @@ public class AlunoService {
 			update(aluno);
 		}
 	}
+	
+	public Aluno findByMatricula(String matricula) {
+		return alunoRepository.findByMatricula(matricula);
+	}
 
 }

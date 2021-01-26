@@ -8,29 +8,40 @@
 	lang="pt-br">
 	
 <ui:composition template="/layout.xhtml">
+	<f:metadata>
+		<f:viewParam name="matricula" value="#{alunoBean.matricula}" />
+		<f:viewAction action="#{alunoBean.carregar}" />
+	</f:metadata>
 	<ui:define name="conteudo">
 
 	    <header>
 	        <div class="container" >
 	            <div class="row">
 	                <div class="col-12 text-dark text-center">
-	                    <h1>Novo Aluno</h1>
+	                    <h1>#{alunoBean.titulo}</h1>
 	                </div>
 	            </div>
 	        </div>
 	    </header>
 	
-	    <div class="container-fluid">
-	        <div class="alert alert-warning" role="alert">	        	
-	            Alerta warning em caso de erro no sistema!
-	        </div>
-	    </div>
-	    <br />
+		<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
+		    <div class="container-fluid">
+		        <div class="alert alert-warning alert-dismissible fade show" role="alert">	        	
+		            <h:messages />
+		            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+		        </div>
+		    </div>
+		    <br />
+	    </h:panelGroup>
+	    
 	    <section>
 	        <div class="container-fluid">
 	            <form jsf:id="form">
+	            	<input type="hidden" jsf:value="#{alunoBean.aluno.matricula}" />
 	                <div class="container">
-	                    <h4>Dados Pessoais</h4>
+	                    <h4>#{alunoBean.titulo}</h4>
 	                    <hr />
 	                    <div class="form-group">
 	                        <label for="nome">Nome</label>
