@@ -15,8 +15,9 @@ public class AlunoService {
 	private AlunoRepository alunoRepository;
 	
 	private void create(Aluno aluno) {
-		Validation.assertNotEmpty(aluno);
-		aluno.gerarMatricula();
+		Validation.assertNotEmpty(aluno);		
+		String maxMatricula = alunoRepository.getMaxMatricula();
+		aluno.gerarMatricula(maxMatricula);
 		alunoRepository.store(aluno);
 	}
 	
