@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+	
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="conteudo">
+	
+		    <header>
+		        <div class="container" >
+		            <div class="row">
+		                <div class="col-12 text-dark text-center">
+		                    <h1>Pesquisa de Aluno</h1>
+		                </div>
+		            </div>
+		        </div>
+		    </header>
+		
+		    <h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
+			    <div class="container-fluid">
+			        <div class="alert alert-warning alert-dismissible fade show" role="alert">	        	
+			            <h:messages />
+			            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">x</span>
+						</button>
+			        </div>
+			    </div>
+			    <br />
+		    </h:panelGroup>
+			
+			<section>
+				<div class="container-fluid">
+					<form jsf:id="form">
+						<div class="container">
+							<h4>Parametros de Pesquisa</h4>
+							<hr />
+							<div class="form-group">
+		                        <label for="id">Matrícula</label>
+		                        <input type="text" class="form-control" name="id" id="id" placeholder="Digite o ID do aluno" jsf:value="#{pesquisaAlunoBean.matricula}">
+		                        </input>                
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="nome">Nome</label>
+		                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do aluno" jsf:value="#{pesquisaAlunoBean.nome}">
+		                        </input>                
+							</div>
+							<div class="form-group">
+		                        <label for="rg">RG</label>
+		                        <input type="text" class="form-control" name="rg" id="rg" placeholder="Digite o RG do aluno" jsf:value="#{pesquisaAlunoBean.rg}">
+		                        </input>                
+							</div>							
+                            <div class="form-group">
+                                <label for="telefoneNumero">Telefone</label>
+                                <input type="tel" class="form-control" name="telefoneNumero" id="telefoneNumero" placeholder="Número" jsf:value="#{pesquisaAlunoBean.telefone}"> 
+                                </input>              
+                            </div>  
+							<br />
+							<div class="form-group">
+								<button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{pesquisaAlunoBean.pesquisar}">Pesquisar</button>
+							</div> 
+						</div>
+					
+						<br />
+					
+						<h:panelGroup rendered="#{not empty pesquisaAlunoBean.alunos}">
+							<div class="container">
+								<div class="table-responsive-lg">
+									<table class="table table-hover table-striped">
+										<thead class="thead-dark">
+											<tr>
+												<th>Matricula</th>
+												<th>Nome</th>
+												<th>RG</th>
+												<th>E-mail</th>
+												<th>Telefone</th>
+												<th>Situação</th>
+												<th class="text-center">Ações</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat var="a" value="#{pesquisaAlunoBean.alunos}">
+												<tr>
+													<th scope="row">#{a.matricula}</th>
+													<td>#{a.nome}</td>
+													<td>#{a.rg}</td>
+													<td>#{a.email}</td>
+													<td>
+														#{dataBean.formatTelefone(a.telefone.dddCelular, a.telefone.numeroCelular)} <br />
+														#{dataBean.formatTelefone(a.telefone.dddFixo, a.telefone.numeroFixo)}
+													</td>
+													<td>#{a.situacao}</td>
+													<td class="text-center">
+														<input type="button" class="btn btn-outline-success" value="Editar" jsf:outcome="dadosAluno?matricula=#{a.matricula}" />&#160;&#160;
+														<input type="submit" class="btn btn-outline-danger" value="Excluir" onclick="return confirm('Deseja excluir o aluno #{a.nome}?')" jsf:action="#{pesquisaAlunoBean.excluir(a.matricula)}" />
+													</td>			
+												</tr>
+											</ui:repeat>											
+										</tbody>	
+									</table>
+								</div>
+							</div>	
+					</h:panelGroup>	
+				</form>
+				</div>
+			</section>
+	
+	    </ui:define>
+	 </ui:composition>
+ </html>

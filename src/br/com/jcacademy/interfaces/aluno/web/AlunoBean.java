@@ -67,6 +67,4 @@ public class AlunoBean implements Serializable {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
-	
 }

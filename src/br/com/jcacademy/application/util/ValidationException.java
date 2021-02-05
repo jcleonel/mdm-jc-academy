@@ -1,5 +1,8 @@
 package br.com.jcacademy.application.util;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException
 public class ValidationException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
