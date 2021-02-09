@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
+
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="conteudo">
+	
+			<header>
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-dark text-center">
+							<h1>Relatório de Situações</h1>
+						</div>
+					</div>
+				</div>
+			</header>
+	
+			<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
+				<div class="container-fluid">
+					<div class="alert alert-warning alert-dismissible fade show"
+						role="alert">
+						<h:messages />
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">x</span>
+						</button>
+					</div>
+				</div>
+				<br />
+			</h:panelGroup>
+	
+			<section>
+				<div class="container-fluid">
+					<form jsf:id="form">
+						<div class="container">
+		                    <h4>Parametros de Situação</h4>
+							<hr />
+							<div class="form-group">
+		                        <label for="situacao">Situação</label>
+		                       <select class="form-control" jsf:value="#{relatorioSituacoesBean.situacao}" id="situacao" size="0">
+		                             <f:selectItems value="#{dataBean.situacoes}" />
+		                        </select>
+							</div>
+							<br />
+							<div class="form-group">
+								<button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{relatorioSituacoesBean.gerarRelatorio}">Gerar Relatório</button>
+							</div> 
+						</div>					
+						<br />
+						
+						<h:panelGroup rendered="#{not empty relatorioSituacoesBean.alunos}">
+							<div class="container">
+								<div class="table-responsive-lg">
+									<table class="table table-hover table-striped">
+										<thead class="thead-dark">
+											<tr>
+												<th>Matrícula</th>
+												<th>Nome</th>
+												<th>Situação</th>
+												<th>Celular</th>
+												<th>Fixo</th>
+												<th>Ações</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat var="a" value="#{relatorioSituacoesBean.alunos}">
+												<tr>
+													<th>#{a.matricula}</th>
+													<td>#{a.nome}</td>
+													<td>#{a.situacao}</td>
+													<td>#{dataBean.formatTelefone(a.telefone.dddCelular, a.telefone.numeroCelular)}</td>
+													<td>#{dataBean.formatTelefone(a.telefone.dddFixo, a.telefone.numeroFixo)}</td>
+													<td>
+														<input type="button" class="btn btn-outline-success" value="Editar" jsf:outcome="dadosAluno?matricula=#{a.matricula}" />
+													</td>			
+												</tr>
+											</ui:repeat>									
+										</tbody>		
+									</table>
+								</div>
+							</div>
+						</h:panelGroup>
+					</form>		
+				</div>
+			</section>
+
+		</ui:define>
+	</ui:composition>
+</html>

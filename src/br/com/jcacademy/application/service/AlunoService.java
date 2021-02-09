@@ -9,6 +9,7 @@ import br.com.jcacademy.application.util.StringUtils;
 import br.com.jcacademy.application.util.Validation;
 import br.com.jcacademy.application.util.ValidationException;
 import br.com.jcacademy.domain.aluno.Aluno;
+import br.com.jcacademy.domain.aluno.Aluno.Situacao;
 import br.com.jcacademy.domain.aluno.AlunoRepository;
 
 @Stateless
@@ -52,5 +53,10 @@ public class AlunoService {
 		}
 		
 		return alunoRepository.listAlunos(matricula, nome, rg, telefone);
+	}
+	
+	public List<Aluno> listSituacoesAlunos(Situacao situacao){
+		Validation.assertNotEmpty(situacao);
+		return alunoRepository.listSituacaoAlunos(situacao);
 	}
 }
