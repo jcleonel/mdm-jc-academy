@@ -1,5 +1,6 @@
 package br.com.jcacademy.application.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -8,6 +9,7 @@ import javax.ejb.Stateless;
 import br.com.jcacademy.application.util.StringUtils;
 import br.com.jcacademy.application.util.Validation;
 import br.com.jcacademy.application.util.ValidationException;
+import br.com.jcacademy.domain.acesso.Acesso;
 import br.com.jcacademy.domain.aluno.Aluno;
 import br.com.jcacademy.domain.aluno.Aluno.Situacao;
 import br.com.jcacademy.domain.aluno.AlunoRepository;
@@ -58,5 +60,13 @@ public class AlunoService {
 	public List<Aluno> listSituacoesAlunos(Situacao situacao){
 		Validation.assertNotEmpty(situacao);
 		return alunoRepository.listSituacaoAlunos(situacao);
+	}
+	
+	public List<Acesso>	listAcessosAlunos(String matricula, LocalDate dataInicial, LocalDate dataFinal){
+		if (StringUtils.isEmpty(matricula) && dataInicial == null && dataFinal == null) {
+			throw new ValidationException("Pelo menos um critério de pesquisa deve ser fornecido.");
+		}
+		
+		return alunoRepository.listAcessosAlunos(matricula, dataInicial, dataFinal);
 	}
 }
