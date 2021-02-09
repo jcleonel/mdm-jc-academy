@@ -9,6 +9,9 @@
 	
 	<ui:composition template="/layout.xhtml">
 		<ui:define name="conteudo">
+			<f:metadata>
+				<f:viewAction action="#{pesquisaAlunoBean.check}" />
+			</f:metadata>
 	
 		    <header>
 		        <div class="container" >
@@ -40,7 +43,7 @@
 							<hr />
 							<div class="form-group">
 		                        <label for="id">Matrícula</label>
-		                        <input type="text" class="form-control" name="id" id="id" placeholder="Digite o ID do aluno" jsf:value="#{pesquisaAlunoBean.matricula}">
+		                        <input type="text" class="form-control" name="id" id="id" placeholder="Digite a matrícula do aluno" jsf:value="#{pesquisaAlunoBean.matricula}">
 		                        </input>                
 		                    </div>
 		                    <div class="form-group">
