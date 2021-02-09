@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
+
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="conteudo">
+	
+			<header>
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-dark text-center">
+							<h1>Controle de Acesso</h1>
+						</div>
+					</div>
+				</div>
+			</header>
+	
+			<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
+				<div class="container-fluid">
+					<div class="alert alert-warning alert-dismissible fade show"
+						role="alert">
+						<h:messages />
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">x</span>
+						</button>
+					</div>
+				</div>
+				<br />
+			</h:panelGroup>
+	
+			<section>
+				<div class="container-fluid">
+					<form jsf:id="form">
+						<div class="container">
+							<h4>Parametros de Acesso</h4>
+							<hr />
+							<div class="form-group">
+								<label for="id">Matrícula</label> 
+								<input type="text" class="form-control" id="id" placeholder="Digite a matrícula" jsf:value="#{controleAcessoBean.matricula}" />
+							</div>
+							<div class="form-group">
+								<label for="rg">RG</label> 
+								<input type="text" class="form-control" name="rg" id="rg" placeholder="Digite o RG" jsf:value="#{controleAcessoBean.rg}" />
+							</div>
+							<br />
+							<div class="form-group">
+								<button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{controleAcessoBean.registrarAcesso}">Registrar Acesso</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+	
+		</ui:define>
+	</ui:composition>
+</html>
