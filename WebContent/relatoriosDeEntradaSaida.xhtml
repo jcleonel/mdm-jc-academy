@@ -7,35 +7,12 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
 
 	<ui:composition template="/layout.xhtml">
+		<ui:param name="title" value="Relatório de Entradas e Saídas" />
 		<ui:define name="conteudo">
 			<f:metadata>
 				<f:viewParam name="matricula" value="#{relatorioEntradaSaidaBean.matricula}" />
 				<f:viewAction action="#{relatorioEntradaSaidaBean.carregarAluno}" />
-			</f:metadata>
-	
-			<header>
-				<div class="container">
-					<div class="row">
-						<div class="col-12 text-dark text-center">
-							<h1>Relatório de Entradas e Saídas</h1>
-						</div>
-					</div>
-				</div>
-			</header>
-	
-			<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
-				<div class="container-fluid">
-					<div class="alert alert-warning alert-dismissible fade show"
-						role="alert">
-						<h:messages />
-						<button type="button" class="close" data-dismiss="alert"
-							aria-label="Close">
-							<span aria-hidden="true">x</span>
-						</button>
-					</div>
-				</div>
-				<br />
-			</h:panelGroup>
+			</f:metadata>	
 	
 			<section>
 				<form jsf:id="form">
@@ -108,8 +85,7 @@
 								</table>
 							</div>
 						</div>
-					</h:panelGroup>
-				
+					</h:panelGroup>				
 				</form>
 			</section>
 			
