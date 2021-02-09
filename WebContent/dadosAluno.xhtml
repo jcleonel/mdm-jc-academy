@@ -192,21 +192,33 @@
 		                    </div>                   
 		                </div>
 		                <br />
-		
-		                <div class="container">
-		                    <div class="row">
-		                        <div class="col-lg-6 col-12">
-		                            <div class="form-group">
-		                                <button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{alunoBean.gravar}">Gravar</button>
-		                            </div>                            
-		                        </div>
-		                        <div class="col-lg-6 col-12">
-		                            <div class="form-group">
-		                                <button type="button" class="btn btn-dark btn-lg btn-block" jsf:outcome="relatoriosDeEntradaSaida?matricula=#{alunoBean.aluno.matricula}">Relatório de entradas e saídas</button>
-		                            </div>                            
-		                        </div>
-		                    </div>                    
-		                </div>                
+		                
+		                <h:panelGroup rendered="#{alunoBean.matricula == null}">
+			                <div class="container">			                    
+	                            <div class="form-group">
+	                                <button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{alunoBean.gravar}">Gravar</button>
+	                            </div>			                                        
+			                </div> 
+		                </h:panelGroup> 
+		                
+						<h:panelGroup rendered="#{alunoBean.matricula != null}">
+			                <div class="container">
+			                    <div class="row">
+			                        <div class="col-lg-6 col-12">
+			                            <div class="form-group">
+			                                <button type="submit" class="btn btn-dark btn-lg btn-block" jsf:action="#{alunoBean.gravar}">Gravar</button>
+			                            </div>                            
+			                        </div>
+			                        <div class="col-lg-6 col-12">
+			                            <div class="form-group">
+			                                <button type="button" class="btn btn-dark btn-lg btn-block" jsf:outcome="relatoriosDeEntradaSaida?matricula=#{alunoBean.aluno.matricula}">Relatório de entradas e saídas</button>
+			                            </div>                            
+			                        </div>
+			                    </div>                    
+			                </div> 
+		                </h:panelGroup> 
+		                
+		                              
 		            </form>
 		        </div>
 		    </section>
